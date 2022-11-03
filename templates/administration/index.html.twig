@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/framework.css" />
+    <link rel="stylesheet" href="css/master.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
+	<style>
+			.example-wrapper {
+				margin: 1em auto;
+				max-width: 800px;
+				width: 95%;
+				font: 18px / 1.5 sans-serif;
+			}
+			.example-wrapper code {
+				background: #F5F5F5;
+				padding: 2px 6px;
+			}
+		</style>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+  </head>
+  <body>
+    <div class="page d-flex">
+      <div class="sidebar bg-white p-20 p-relative">
+        <h3 class="p-relative txt-c mt-0">YMNA TRADING SARL</h3>
+        <ul>
+					<li><a class="active d-flex align-center fs-14 c-black rad-6 p-10" href="{{path('app_administration')}}"><i class="fa-regular fa-chart-bar fa-fw"></i><span>Dashboard</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_agent_index')}}"><i class="fa-solid fa-user-tie"></i><span>Agent</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_client_index')}}"><i class="fa-solid fa-user-check"></i><span>Client</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_fourgon_index')}}"><i class="fa-sharp fa-solid fa-truck-fast"></i><span>Fourgon</span></a></li>
+
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_remorque_index')}}"><i class="fa-sharp fa-solid fa-truck-moving"></i><span>Remorque</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_fournisseur_index')}}"><i class="fa-solid fa-boxes-packing"></i><span>Fournisseurs</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_parking_index')}}"><i class="fa-solid fa-square-parking"></i><span>Parking</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_transaction_index')}}"><i class="fa-regular fa-credit-card fa-fw"></i><span>Transit</span></a></li>
+
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_logout')}}"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a></li>
+				</ul>
+      </div>
+      <div class="content w-full">
+        <!-- Start Head -->
+        <div class="head bg-white p-15 between-flex">
+          <div class="search p-relative">
+            <input class="p-10" type="search" placeholder="Type A Keyword" />
+          </div>
+          <div class="icons d-flex align-center">
+            <span class="notification p-relative">
+              <i class="fa-regular fa-bell fa-lg"></i>
+            </span>
+            <img src="imgs/avatar.png" alt="" />
+          </div>
+        </div>
+        <!-- End Head -->
+        <h1 class="p-relative">Dashboard</h1>
+        <div class="wrapper d-grid gap-20">
+          <!-- Start Welcome Widget -->
+          <div class="welcome bg-white rad-10 txt-c-mobile block-mobile">
+            <div class="intro p-20 d-flex space-between bg-eee">
+              <div>
+                <h2 class="m-0">Welcome</h2>
+                <p class="c-grey mt-5">YMNA TRADING SARL</p>
+              </div>
+              <img class="hide-mobile" src="imgs/welcome.png" alt="" />
+            </div>
+            <img src="imgs/avatar.png" alt="" class="avatar" />
+            <div class="body txt-c d-flex p-20 mt-20 mb-20 block-mobile">
+              <div>{{ countClient['value'] }} <span class="d-block c-grey fs-14 mt-10">Total des Clients</span></div>
+              <div>{{ countAgent['value'] }} <span class="d-block c-grey fs-14 mt-10">Total Des Agents</span></div>
+              <div>{{ countTransit['value'] }} <span class="d-block c-grey fs-14 mt-10">Transit Effectuer </span></div>
+            </div>
+         
+          </div>
+          <!-- End Welcome Widget -->
+          <!-- Start Quick Draft Widget -->
+          <div class="quick-draft p-20 bg-white rad-10">
+            <h2 class="mt-0 mb-10">Transit Graph</h2>
+            <p class="mt-0 mb-20 c-grey fs-15">Transit information graph</p>
+           <div class="example-wrapper">
+							{{ render_chart(chart, {'id': 'my-chart'})}}
+
+						</div>
+          </div>
+          <!-- End Quick Draft Widget -->
+         <div class="tickets p-20 bg-white rad-10">
+            <h2 class="mt-0 mb-10">Agent Statistics</h2>
+            <p class="mt-0 mb-20 c-grey fs-15">Total des tansit effectue entre Agent & client </p>
+            <div class="d-flex txt-c gap-20 f-wrap">
+			<div  class="box p-20 rad-10 fs-13 c-grey">
+								<img src="data:image/png;base64,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">
+								<span class="d-block c-black fw-bold fs-25 mb-5">{{ countClient['value'] }}</span>
+								Total Client
+							</div>
+              <div class="box p-20 rad-10 fs-13 c-grey">
+								<img src="data:image/png;base64,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">
+								<span class="d-block c-black fw-bold fs-25 mb-5">{{ countAgent['value'] }}</span>
+								Total des Agents
+							</div>
+              
+              <div class="box p-20 rad-10 fs-13 c-grey">
+                <img src="data:image/png;base64,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">
+               <span class="d-block c-black fw-bold fs-25 mb-5">{{ countFourni['value'] }}</span>
+								Total des fournisseurs
+              </div>
+              <div class="box p-20 rad-10 fs-13 c-grey">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADk0lEQVRoge2ZT2hURxzHP7O7WU2xF//VEj14MR4rsTYHobS30ksRuy0aSg+CLBs95LJRFF4hhCx4KEl31xU8NaIugofWq39uISi51lIQNFVYiQiK2YTd9+thU9D35r038/a5CuZz/M3Mb75f5s2bf7DOOh82KpEs9XqaZ/8cwE19BQwBe4FPgU1rNV4Cj4H7oO4Ct2gsz+M4brddd2egPLEL1VcAGQEGLHtexGWWtipzsrgYV0I8A9OT28ikJ0B+BrJxO19jFbiI655l9PSSbWN7A5WpI8AMsNm6bThLiBQonLpq08jcQK3WR/t5BeSYtTQr1HkayydwnJZRbaOcNecj2huvAd90I82CG6SbOY47r6IqpiNT1Wp9tFvX6Z14gD1I5jM+P1jn9u3QP1UqMlX7eYXeiv+fb9m+cTqqUvgnVC0dRWQ2MUlxUPxAfrweVBw8Ar9NbkHk1yS1TA1/ad9IqFA7tzWoONhAKj0JBDaMQ3HfcBwTW2i3nKBCvYHp0s61RSpxYpo4RnVCu9LrDWQYpfsVNpAYJjYg6YKuwG/AcVIoORpTmzH2JtRP1Ou+337GV29H9gtcdgalkXzRotNwivuGARifu2NSfYClB0PA/OtB/wh0tsQ9w24k5GtvxG9A2N+tKFssTAx5A34Dij0JaLLG0MSgN+CfA52TVCCqWrKQlTDi16b7jW7SxN4XPvYGojdz7zk6Ay97rsKcF96Abg48IeS4GHMrYEzoHFM88YZ0I3A/rIPSwpzpwpM8ov7yhnQG7kXleXcmXJ82jQF10yTVOzEh+LT550BjeZ7t/Y9AdkXlKy3MAf6DyltaKx7ydMVgBBzHReSSadYejsSs7ipSvw60VZnOjZkRPTCxgmpVdAV6A527yos2PbxlExfIn/lXV6BbBzpks2dYXT0MbDPtpbQwR38mOGVMlnDdX4IKI65Vpn5EuJy0IitEfU+heC2oOHwvlB+/Aup84qLMmQkTDyabua27RxGuJybJGPmTRnMsqla0gVyuTaY5AtxIQpYhf9DckDO5oTbbTh93XtFofgdUu1VmwAyN5iHGxpZNKts/cFSncghlEr61AxqIKkR9817sDzT58TrZ7CBQBlas2/tpAjMge23FQ7ePfNWJgc6NWWrEZO/k4SFKfqeVqnCi+DiuhGSeWR0nxSf9+9fubYaAQYQB3nhmlUWU+huRuwg3ebpyL4ln1nXW+dD5DxqaFarTpy8RAAAAAElFTkSuQmCC">
+                <span class="d-block c-black fw-bold fs-25 mb-5"> {{ countTransit['value'] }}</span>
+              Total Des Transit
+              </div>
+            </div>
+          </div>
+          <!-- Start Ticket Widget -->
+          <div class="tickets p-20 bg-white rad-10">
+            <h2 class="mt-0 mb-10">Transport Statistics</h2>
+            <p class="mt-0 mb-20 c-grey fs-15">Totel des remorque & fourgon </p>
+            <div class="d-flex txt-c gap-20 f-wrap">
+            
+             <div class="box p-20 rad-10 fs-13 c-grey">
+								<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABmJLR0QA/wD/AP+gvaeTAAAEqUlEQVR4nO2bS4wVRRSGv1HUMTCwMXHBLAww40qBjdERUZHI0sSNMTFuTIzGjUsFXOJo4gMfCwgY404kupGlLxiNiSZqTNAomqg4hiEiIuMrIV4XdYou6lb37e7qru7R8yWV3K46p89f53ZVd9etC4qiKIqiKIqiKIqiKIqiKP1m0EJZBD4CHgVWpetKN7SRQLecALYk600H2I426X8lcAfwobT9CdwUEaPXtJFAy8XAfmn/Hrg8Ik5vaTOBAMuAo2LzYESc3hJKwKXAk8BPTvs8MCtto/x97hKbT2LF9pFQAp4g/6bweAl/n8uAn8VuY6Te3hFKwLzU3eDUzZBdiaP8Q+wWuxfryewvoQTkJaWKrc81Ynea/9jNJFUCAT4W27urCOw7KRP4gNi+VUVg30mZwFXA78A/wFq/8aKSJ/k/cwZ4AxgD7u1YS2OkvAIBbhH745g3lSVP6gSOAcfEZ5vboEO4HAPgZfl8X5dCmiL2CjwjdZMVYq4GzgF/AVdU8OslRW8iM07djVL3o2f7utQfoloSD4nfw1XE9pFQAmeder/s8mynyd5zbfkb+Ay4pyDunWL7eZz87slbjZkluxLtlbeL4dUYMEPyANlwdssjOXEvARbE5rqoHnRM7HpgiOXAQ5h57px8XhGwe0pi72k4flLaSKBlO/lTgVt+bSl+EtpMIJh58FPMvFiUxCVL1x04H18fpCPRBI5mEjgI/Eb3V35jpOrIJHAKnQNrc1DivIl5bkwdvzVSdcAO29Ve/fn4yxIJWarY3IzlGehNpBj7O8geChYdluJ4TqU5tOgwdBPRBBZTtOhQWsxWYB/wFWYj4h/AN8ArwO0lRGwT228x28YW5Vz7gNtKdyWjbAJ93bFxg/GLxKwF5si/hG2ZA6YC/tPA+yX8DwNr6nYgQnfVuMH4eWI2YVYcBpgdm9uB9Zhln+XABmCHtNnViU2O/2ayx4Cy/u5qcukONKDbjfsBJvlFxzb++jwx05j9IAPgVcLrYpYJzBwxEJ8p4GqnE1X8fwHWFdha8hJYV7cbdw444tiFjm3870JixjCXthWR+wzk+bxGNiyORPi/U8I+lMBY3WXiBjX4YuyPyCco/gZ9JsiWu2P9N4+wDSWwCd2j4g5pCD1I2+0Lz2PuWpZx4FnMbw7z8nncaT8LvOAcx/jX2ULRhO5aWzf8b/MLOb7Ws3vOsbVlt2ezwWmL8T9aUXNTukfFDWrIu8X7w+Ck1M+Q/d664NlMNOhft6SM+0Odd+Eyk3Ob/n2Jexy4P9SQNxTsfuG6Q7iKf5Wh1KTuOnGHeElOtsOrHweeIZuMn+bCyRjgMUdkjP/+jnTXiTvEzWSPAxMV/FaSzTex/nX+YtWE7sb+2vWenPAA5R9I7fK3+yBdx//tGnotMbpj4g4xhXm9GWCe1Iu+0ZWOCPtK5L5SVfE/RWAfcgLdsXGDzJAlYQHYifnHzgopGzFzh738T3PhS7n7Ul/W//qOdDcRN8gasmFRVA4T/gbXkQ3novIucFUHupuOm8sWYC/wJdmC6teYba9lFia3iu0x8V2Uc+0Fbm1Br8XXnSquoiiKoiiKoiiKoihKmH8BcIrS0PJDE8IAAAAASUVORK5CYII=">
+								<span class="d-block c-black fw-bold fs-25 mb-5">{{ countRemorque['value'] }}</span>
+								Total Des Remorques
+							</div>
+              <div class="box p-20 rad-10 fs-13 c-grey">
+								<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAACfklEQVRoge2ZzWsTQRjGn9kYibqJQkmp+IEHRbwV0kJ7sSkUkTYSInjx4MV/wHrxoBdBSoWSk3j3Lq3apmAPmij4LaWKRUShaq1BMdWa9MMkOx4Kga6Z3WTf2V2K8ztleGf3fR7eybyzDKBQ/N8wuwm9qUyyCgwyhg5w7PBCFBhK4Ow5DKRzt/vHradaEE9NDnPwC3LVNQsfyo0lLoqiQgO9qUzSAG65I6o5GHAiOzYwUS+miR6qAoPuSWoODpwXxYQGGHjMHTmO6BAFhAYApruhxCFhUcDCwOZAGfCbLdQX3LnRh0h4q+28pWIZhcU1zLwp4G52HrPvflJTA5BgoFEiehARPYgD+3Qkj+/HVO4LRq6/xp+yQXovfQkx29NIXY717MGlc+3k9OQKmOXHT07+myTA0Na6HV2xKM6ePoxtoQAA4Gh3G7pirXjy8pvj/OQKNFKASpVj/msJNyfmcPXaqw2xgb69pPwSDDS3hB48zmN1rVobHzm0i5Tf823U4BwL+eXaeGfEfgezwpMlZCasB2u/V1YqpPyeL6HO9iiiLaHaeO5zkZRf+i5Uj0CAIdoSQk/3bpw5dXBDLPsoT8pPb2QmB9nR/oYf/fDxN8anPpHS0yvgrI9hZraAyyPTKFdondizo0RpuYIfi6t4+/4X7j1cwNPp7+Cc/l6yAc1Ugnqd2E0knIUkqCDg+TYqG7oBGSoI+NKJZaL+A8xnB2oJ+Q25kXnduMxs+gooA35jYYDTPpXksiQKWBjQXrihxCFCLWIDBtKuSHGAxrhQi9DA+u0gH3JHUuNwhiv3RxMZUdy2j8ZTmcT6HRXv9O7WhhcB9kxjPG0lXqFQAH8BLNSYzifwEDYAAAAASUVORK5CYII=">
+								<span class="d-block c-black fw-bold fs-25 mb-5">{{ countParking['value'] }}</span>
+								Total des parking
+							</div>
+              <div class="box p-20 rad-10 fs-13 c-grey">
+								<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABmJLR0QA/wD/AP+gvaeTAAAEiUlEQVRYhc2Y20scdxTHv7+Z2XFmdnZ29mKISTSkXqohEdMECgVLoZdAKX3rW0xMUlr6GGiKPhRCH2pbSvsWKE2CMXnqHyAE1BfTQMHWpzZasZLY1WbjXlzXndmdWx82q67zc3fHutbv03B+v3POh/O7HQY44CLVJly6ff0dnuM/NyzrrG3b4l4kZRhG83HcVN7Uvxi58u3YrgGvDg98Rwj7ydn2DuFwOAK/sCd8WNc1LCeTmJ6b1SzLuXnnypefegbsvz3QL/C+m++++poo8PyegG2XXihg9JdHmp43Px7+cOgebQ5D9XRAGJZ83dvdUzc4ABB4Hr2ne0SGY76BQy8WFfDij4PtHMtJjUG1bnAlNaoqOIbI/cPX22jjVEDC2O2KKFn1RduUIkmmZaKdNsbRjA5x+uPpVPD+2IP6km1KdRhcADC6fYAKyDLcS+c6zuN06+t1JwOA6bkJTP853koboy4xx/DNslT//VeSLKrgOF8LlYVmJIDiF4KekqQzJhYWNcABTrSIUBVqaDqgpIIQQq0INYrpGLxfLJ9vO0BsScfzVAEEBNGwD0ebBDAvLoeFpxoKhr3xfeZUoCY/AJAFFbZtNtBYXEv8wU/XRMuyiNQQKLPHlnUsxfMwDAcFw8bSszxiyzq9JB79/EIQpmWSN27cELb7cwBw+c7ge4RgxLSsEDJAAy+CkHL2laThSr6SNNB8pBjzRIuIhafaxnetfgDAMCx4TkDLsZx28dZn4Fg2aQN9w5eHRjkAIAR33zxzLtSoqphdXMRf/6SqVgZA2UOpKtzGsnrxK8kvBtDTehztx1oQT6fDE9O/jgCIMgBgWla4US3uudX1NQSkiCtANOxz20Ju2279AmIY6ew6AOCQqsK0zAhAOSRruRwOhd2vztGm4pKUlqy02aupVj9FjiKRfu6yuwDzhglZdJ94hgDNR4SyvVOLavULiGHE4qbbHwA4lk3G02kAQMG0qYD1liyqMKzi8x9PpcCxXAJ4UUEb6JuYnrpnWlaY9wn/C6BfDCFvmLg/9qAIZ1t9AOU8Xbo14Diw9x0QAAhhcPfqV2VMrj3owMaFt87vH9UW0bonekd9gHTgASu2HFExgpORTjgAHidmsKIl9iSpl7gVAbsinWhgi01GV/hlTMYeAQAcB5j5LY753xPQNfdbu1WC6EPbqSg6X2msGtcz4E56MpfCswUN77/dC1mSKs7N5nIYfzgFUeZwvCPkOVfFPfg4MQPdykM3dfyRnN2wL81n0N3VVhUOAGRJQs/JDsTmM1Xj0lSxgitaApN//+yyr6byCHcrVeFKUoMyMqnNHnCnuDR5PsW27UDPFWqqXkmK7IeWM2Bbjtd03gGzqwXIsgiGqfrfaUOEEPj9ArKZgtd03gHX0jqUgN9zIiUgI7ua9+znHXA1j6Ase04UUmSspfYBcD1lQFVqbO23KCjLyK7uwxJn0vndLfEuK0i9Zir9kxEThzE6vvPNX0mEdSrGpskFKMw3VXT4Yeha7ceXoo8Gv/d01xz4bsYNSPBwp8kEmPzPGesdf7/1L90xqu/H1POWAAAAAElFTkSuQmCC">
+								<span class="d-block c-black fw-bold fs-25 mb-5">{{ countFourgon['value'] }}</span>
+								Nombre des fourgons
+							</div>
+
+            </div>
+          </div>
+          <!-- End Ticket Widget -->
+
+
+
+		    <!-- Start Ticket Widget -->
+         
+        
+       
+        
+      </div>
+    </div>
+  </body>
+  {% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+</html>

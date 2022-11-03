@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fourgon{% endblock %}
+
+{% block body %}
+    <h1>Fourgon</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fourgon.id }}</td>
+            </tr>
+            <tr>
+                <th>Date_matriculation</th>
+                <td>{{ fourgon.dateMatriculation ? fourgon.dateMatriculation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ fourgon.marque }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fourgon_index') }}">back to list</a>
+
+    <a href="{{ path('app_fourgon_edit', {'id': fourgon.id}) }}">edit</a>
+
+    {{ include('fourgon/_delete_form.html.twig') }}
+{% endblock %}

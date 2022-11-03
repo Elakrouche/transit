@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}YMNA TRADING SARL
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+			<style>
+				.example-wrapper {
+					margin: 1em auto;
+					max-width: 800px;
+					width: 95%;
+					font: 18px / 1.5 sans-serif;
+				}
+				.example-wrapper code {
+					background: #F5F5F5;
+					padding: 2px 6px;
+				}
+			</style>
+
+			<div class="example-wrapper">
+				{{ render_chart(chart, {'id': 'my-chart'})}}
+
+			</div>
+
+
+		{% endblock %}
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+		<!-- HTML !-->
+
+
+		<style>
+			.button-62 {
+				background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+				border: 0;
+				border-radius: 12px;
+				color: #FFFFFF;
+				cursor: pointer;
+				display: inline-block;
+				font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+				font-size: 16px;
+				font-weight: 500;
+				line-height: 2.5;
+				outline: transparent;
+				padding: 0 1rem;
+				text-align: center;
+				text-decoration: none;
+				transition: box-shadow 0.2s ease-in-out;
+				user-select: none;
+				-webkit-user-select: none;
+				touch-action: manipulation;
+				white-space: nowrap;
+			}
+
+			.button-62:not([disabled]):focus {
+				box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5), -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5), 0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
+			}
+
+			.button-62:not([disabled]):hover {
+				box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5), -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5), 0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
+			}
+		</style>
+	</body>
+</html>

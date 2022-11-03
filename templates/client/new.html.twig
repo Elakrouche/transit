@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Settings</title>
+		<link rel="stylesheet" href="{{ asset('css/all.min.css')}}"/>
+		<link rel="stylesheet" href="{{ asset('css/framework.css')}}"/>
+		<link rel="stylesheet" href="{{ asset('css/master.css')}}"/>
+		<link rel="preconnect" href="https://fonts.googleapis.com"/>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet"/>
+	</head>
+	<body>
+		<div class="page d-flex">
+			<div class="sidebar bg-white p-20 p-relative">
+				<h3 class="p-relative txt-c mt-0">YMNA Trading Sarl</h3>
+				<ul>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10" href="{{path('app_administration')}}"><i class="fa-regular fa-chart-bar fa-fw"></i><span>Dashboard</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_agent_index')}}"><i class="fa-solid fa-user-tie"></i><span>Agent</span></a></li>
+					<li><a class="active d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_client_index')}}"><i class="fa-solid fa-user-check"></i><span>Client</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_fourgon_index')}}"><i class="fa-sharp fa-solid fa-truck-fast"></i><span>Fourgon</span></a></li>
+
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_remorque_index')}}"><i class="fa-sharp fa-solid fa-truck-moving"></i><span>Remorque</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_fournisseur_index')}}"><i class="fa-solid fa-boxes-packing"></i><span>Fournisseurs</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_parking_index')}}"><i class="fa-solid fa-square-parking"></i><span>Parking</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_transaction_index')}}"><i class="fa-regular fa-credit-card fa-fw"></i><span>Transit</span></a></li>
+
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_logout')}}"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a></li>
+				</ul>
+			</div>
+			<div
+				class="content w-full">
+				<!-- Start Head -->
+				<div class="head bg-white p-15 between-flex">
+					<div class="search p-relative">
+						<input class="p-10" type="search" placeholder="Type A Keyword"/>
+					</div>
+					<div class="icons d-flex align-center">
+						<span class="notification p-relative">
+							<i class="fa-regular fa-bell fa-lg"></i>
+						</span>
+						<img src="imgs/avatar.png" alt=""/>
+					</div>
+				</div>
+				<!-- End Head -->
+				<h1 class="p-relative">Add New Client</h1>
+				<div
+					class="settings-page m-20 d-grid gap-20">
+
+					<!-- Start Settings Box -->
+					<div class="p-20 bg-white rad-10">
+						<h2 class="mt-0 mb-10">Information Des Clients</h2>
+						<p class="mt-0 mb-20 c-grey fs-15">Enteez les information personnels des Clients</p>
+						{{ form_start(form) }}
+						<div class="mb-15">
+							<label class="fs-14 c-grey d-block mb-10" for="first">Full Name</label>
+							{{ form_widget(form.nom, {'attr': {'Class': 'b-none border-ccc p-10 rad-6 d-block w-full' }}) }}
+
+						</div>
+						<div class="mb-15">
+							<label class="fs-14 c-grey d-block mb-5" for="last">Adress</label>
+							{{ form_widget(form.Adress, {'attr': {'Class': 'b-none border-ccc p-10 rad-6 d-block w-full' }}) }}
+						</div>
+						<div>
+							<label class="fs-14 c-grey d-block mb-5" for="email">Email</label>
+							{{ form_widget(form.mail, {'attr': {'Class': 'b-none border-ccc p-10 rad-6 d-block w-full' }}) }}
+
+
+						</div>
+						<div>
+							<label class="fs-14 c-grey d-block mb-5" for="email">Telephone</label>
+							{{ form_widget(form.Tele, {'attr': {'Class': 'b-none border-ccc p-10 rad-6 d-block w-full' }}) }}
+
+							<!--<a class="c-blue" href="#">Change</a>-->
+						</div>
+						<button style="margin-top:5px;" class="visit d-block fs-14 bg-blue c-white w-fit btn-shape">{{ button_label|default('Add Client') }}</button>
+					</div>
+					{{ form_end(form) }}
+					<!-- End Settings Box -->
+
+					<!-- End Settings Box -->
+					<!-- Start Settings Box -->
+						<div class="social-boxes p-20 bg-white rad-10"> <h2 class="mt-0 mb-10">Social Info</h2>
+						<p class="mt-0 mb-20 c-grey fs-15">Social Media Information</p>
+						<div class="d-flex align-center mb-15">
+							<i class="fa-brands fa-twitter center-flex c-grey"></i>
+							<input class="w-full" type="text" placeholder="Twitter Username"/>
+						</div>
+						<div class="d-flex align-center mb-15">
+							<i class="fa-brands fa-facebook-f center-flex c-grey"></i>
+							<input class="w-full" type="text" placeholder="Facebook Username"/>
+						</div>
+						<div class="d-flex align-center mb-15">
+							<i class="fa-brands fa-linkedin center-flex c-grey"></i>
+							<input class="w-full" type="text" placeholder="Linkedin Username"/>
+						</div>
+						<div class="d-flex align-center">
+							<i class="fa-brands fa-youtube center-flex c-grey"></i>
+							<input class="w-full" type="text" placeholder="Youtube Username"/>
+						</div>
+					</div>
+					<!-- End Settings Box -->
+
+				<!-- End Settings Box -->
+
+					<!-- End Settings Box -->
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

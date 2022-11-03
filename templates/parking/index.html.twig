@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>YMNA Trading sarl</title>
+		<link rel="stylesheet" href="{{asset('css/all.min.css')}}"/>
+		<link rel="stylesheet" href="{{asset('css/framework.css')}}"/>
+		<link rel="stylesheet" href="{{asset('css/master.css')}}"/>
+		<link rel="preconnect" href="https://fonts.googleapis.com"/>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet"/>
+		<style>
+			.example-wrapper {
+				margin: 1em auto;
+				max-width: 800px;
+				width: 95%;
+				font: 18px / 1.5 sans-serif;
+			}
+			.example-wrapper code {
+				background: #F5F5F5;
+				padding: 2px 6px;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="page d-flex">
+			<div class="sidebar bg-white p-20 p-relative">
+				<h3 class="p-relative txt-c mt-0">YMNA TRADING SARL</h3>
+					<ul>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10" href="{{path('app_administration')}}"><i class="fa-regular fa-chart-bar fa-fw"></i><span>Dashboard</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_agent_index')}}"><i class="fa-solid fa-user-tie"></i><span>Agent</span></a></li>
+					<li><a class=" d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_client_index')}}"><i class="fa-solid fa-user-check"></i><span>Client</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_fourgon_index')}}"><i class="fa-sharp fa-solid fa-truck-fast"></i><span>Fourgon</span></a></li>
+
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_remorque_index')}}"><i class="fa-sharp fa-solid fa-truck-moving"></i><span>Remorque</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_fournisseur_index')}}"><i class="fa-solid fa-boxes-packing"></i><span>Fournisseurs</span></a></li>
+					<li><a class="active d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_parking_index')}}"><i class="fa-solid fa-square-parking"></i><span>Parking</span></a></li>
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_transaction_index')}}"><i class="fa-regular fa-credit-card fa-fw"></i><span>Transit</span></a></li>
+
+					<li><a class="d-flex align-center fs-14 c-black rad-6 p-10"href="{{path('app_logout')}}"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a></li>
+				</ul>
+			</div>
+			<div
+				class="content w-full">
+				<!-- Start Head -->
+				<div class="head bg-white p-15 between-flex">
+					<div class="search p-relative">
+						<input class="p-10" type="search" placeholder="Type A Keyword"/>
+					</div>
+					<div class="icons d-flex align-center">
+						<span class="notification p-relative">
+							<i class="fa-regular fa-bell fa-lg"></i>
+						</span>
+						<img src="data:image/png;base64,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" alt=""/>
+					</div>
+				</div>
+				<!-- End Head -->
+				<h1 class="p-relative">Gestion Des Parkings</h1>
+				<div
+					class="wrapper d-grid gap-20">
+					<!-- Start Welcome Widget -->
+					<div class="welcome bg-white rad-10 txt-c-mobile block-mobile">
+						<div class="intro p-20 d-flex space-between bg-eee">
+							<div>
+								<h2 class="m-0">Welcome</h2>
+								<p class="c-grey mt-5">YMNA TRADING SARL</p>
+							</div>
+							<img class="hide-mobile" src="{{asset('imgs/welcome.png')}}" alt=""/>
+						</div>
+
+						<img src="data:image/png;base64,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" alt="" class="avatar"/>
+						<div class="body txt-c d-flex p-20 mt-20 mb-20 block-mobile">
+
+							<div>{{ countParking['value'] }}
+
+
+								<span class="d-block c-grey fs-14 mt-10">Totales des Parking</span>
+							</div>
+
+						</div>
+						<a href="{{path('app_parking_new')}}" class="visit d-block fs-14 bg-blue c-white w-fit btn-shape">Add New Parking</a>
+					</div>
+					<!-- Start Top Search Word Widget -->
+					<div class="search-items p-20 bg-white rad-10">
+						<h2 class="mt-0 mb-20">Parking Avec Un Couvre Soleil</h2>
+
+						<div class="items-head d-flex space-between c-grey mb-10">
+							<div>ID</div>
+							<div>Adresse</div>
+						</div>
+						{% for couvre in couvres %}
+							<div class="items d-flex space-between pt-15 pb-15">
+								<span>{{couvre.id}}</span>
+								<span class="bg-eee fs-13 btn-shape">{{couvre.AdressParking}}
+								</span>
+							</div>
+						{% endfor %}
+
+
+					</div>
+
+					<!-- End Top Search Word Widget -->
+				<!-- End Welcome Widget -->
+					<!-- Start Quick Draft Widget -->
+
+					<!-- End Quick Draft Widget -->
+
+					<!-- End Targets Widget -->
+
+					<!-- End Ticket Widget -->
+					<!-- Start Latest News Widget -->
+
+					<!-- End Latest News Widget -->
+
+					<!-- End Tasks -->
+
+					<!-- End Latest Uploads Widget -->
+					<!-- Start Last Project Progress Widget -->
+
+					<!-- End Last Project Progress Widget -->
+					<!-- Start Reminders Widget -->
+
+					<!-- End Reminders Widget -->
+					<!-- Start Latest Post Widget -->
+
+					<!-- End Latest Post Widget -->
+					<!-- Start Social Media Stats Widget -->
+
+					<!-- Start End Media Stats Widget -->
+				</div>
+				<!-- Start Projects Table -->
+				<div class="projects p-20 bg-white rad-10 m-20">
+					<h2 class="mt-0 mb-20">Fourgon</h2>
+					<div class="responsive-table">
+						<table class="fs-15 w-full">
+							<thead>
+								<tr>
+									<td>ID</td>
+									<td>Adress</td>
+									<td>capacite</td>
+									<td>Couvre Soleil</td>
+									<td>mail</td>
+									<td>Tele</td>
+									<td>Action</td>
+								</tr>
+							</thead>
+							<tbody>
+
+								{% for parking in parkings %}
+									<tr>
+										<td>{{ parking.id }}</td>
+										<td>{{ parking.AdressParking }}</td>
+										<td>{{ parking.Capacite }}</td>
+										<td>{{ parking.CouvreSoleil }}</td>
+										<td>{{ parking.Mail }}</td>
+										<td>{{ parking.Tele }}</td>
+
+
+										<td>
+											<a href="{{ path('app_parking_edit', {'id': parking.id}) }}">
+												<span class="label btn-shape bg-orange c-white">Edit</span>
+											</a>
+											<form method="post" action="{{ path('app_parking_delete', {'id': parking.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+												<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ parking.id) }}">
+												<button style="margin-top:7px;" class="label btn-shape bg-red c-white">Delete</button>
+											</form>
+										</td>
+									</tr>
+
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- End Projects Table -->
+			</div>
+		</body>
+	</body>
+</html></body></html></body></html></body></html></div>{% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}</body></html> </body></html>

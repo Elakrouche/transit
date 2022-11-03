@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Remorque{% endblock %}
+
+{% block body %}
+    <h1>Remorque</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ remorque.id }}</td>
+            </tr>
+            <tr>
+                <th>Date_mservice</th>
+                <td>{{ remorque.DateMservice ? remorque.DateMservice|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ remorque.marque }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_remorque_index') }}">back to list</a>
+
+    <a href="{{ path('app_remorque_edit', {'id': remorque.id}) }}">edit</a>
+
+    {{ include('remorque/_delete_form.html.twig') }}
+{% endblock %}
